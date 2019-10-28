@@ -1,9 +1,7 @@
 package com.agileengine.jescobar;
 
-import net.ricecode.similarity.JaroWinklerStrategy;
-import net.ricecode.similarity.SimilarityStrategy;
-import net.ricecode.similarity.StringSimilarityService;
-import net.ricecode.similarity.StringSimilarityServiceImpl;
+import info.debatty.java.stringsimilarity.NormalizedLevenshtein;
+import info.debatty.java.stringsimilarity.interfaces.NormalizedStringDistance;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -51,18 +49,17 @@ import java.util.stream.Collectors;
 
 
      static Element getSimilarElement(String source, List<Element> elementsByTag) {
-        double acceptableDistance = 1.0;
-        Element similarElement = null;
-         SimilarityStrategy similarityStrategy = new JaroWinklerStrategy();
-         StringSimilarityService service = new StringSimilarityServiceImpl(similarityStrategy);
-        for (Element element : elementsByTag) {
-            double distance = service.score(source, stringifiedAttributesElement(element));
-            if (distance < acceptableDistance) {
-                acceptableDistance = distance;
-                similarElement = element;
-            }
+        NormalizedStringDistance detector = new NormalizedLevenshtein();
 
-        }
+         double acceptableDistance = 1.0;
+        Element similarElement = null;
+         for (Element element : elementsByTag) {
+             double compareDistance = detector.distance(source, stringifiedAttributesElement(element));
+             if (compareDistance < acceptableDistance) {
+                 acceptableDistance = compareDistance;
+                 similarElement = element;
+             }
+         }
         return similarElement;
 
     }

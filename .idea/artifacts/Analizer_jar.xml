@@ -4,6 +4,7 @@
     <root id="archive" name="Analizer.jar">
       <element id="module-output" name="Analizer" />
       <element id="extracted-dir" path="$USER_HOME$/Downloads/jsoup-1.11.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/java-string-similarity-0.13.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
