@@ -6,13 +6,13 @@ java -cp Analizer.jar **_<input_origin_file_path> <input_other_sample_file_path>
 
 **Where:** 
 
-input origin file: Is the base html file
+**input origin file**: Is the base html file
 
-Input Other Sample file : is the html file to compare
+**Input Other Sample file** : is the html file to compare
 
-Target Element: Is the element to find and check.
+**Target Element**: Is the element to find and check.
 
-#Sample Output
+# Sample Output
 
 **Element Base PATH**:html>body>div>div>div>div>div>div>\<a id="make-everything-ok-button" class="btn btn-success" href="#ok" title="Make-Button" rel="next" onclick="javascript:window.okDone(); return false;"> Make everything OK \</a>
 
